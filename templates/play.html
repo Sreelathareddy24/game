@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Play</title>
+</head>
+<body>
+    <h1>Playing</h1>
+    <h2>Your Total Score: {{ your_score }} runs</h2>
+    <p>{{ message }}</p>
+    <img src="{{ url_for('static', filename='canvas.png') }}" alt="Canvas">
+    <p>{{ prize }}</p>
+    <a href="/score/{{ your_score }}">End Game</a>
+</body>
+</html>
