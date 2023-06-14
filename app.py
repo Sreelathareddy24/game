@@ -1,5 +1,5 @@
-from flask import Flask, render_template
-
+from flask import Flask, request, render_template
+import pygame
 import random
 import os
 
@@ -10,7 +10,7 @@ CANVAS_WIDTH = 300
 CANVAS_HEIGHT = 300
 CIRCLE_SIZE = 40
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
     return render_template('game.html')
 
