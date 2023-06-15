@@ -1,10 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Game</title>
+    <title>Ball Hitting Game</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <h1>Welcome to the Game!</h1>
-    <a href="/play">Start Playing</a>
+    <h1>Welcome to the Ball Hitting Game!</h1>
+    {% if play %}
+    <div class="canvas">
+        <canvas id="canvas" width="200" height="200"></canvas>
+    </div>
+    <form action="/play" method="post">
+        <input type="hidden" name="hit" id="hit" required>
+        <button type="submit">Hit!</button>
+    </form>
+    {% else %}
+    <form action="/" method="post">
+        <button type="submit">Play Game</button>
+    </form>
+    {% endif %}
+
+    {% if score is defined %}
+    <h2>Game Result</h2>
+    <p>Your score: {{ score }}</p>
+    <p>{{ message }}</p>
+    <form action="/" method="post">
+        <button type="submit">Play Again</button>
+    </form>
+    {% endif %}
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
